@@ -9,7 +9,7 @@ export default class Demo extends Phaser.Scene
 
     constructor () {
         super('demo');
-        this.updateIntervalMs = 1000;
+        this.updateIntervalMs = 100;
         this.lastUpdateMs = 0;
     }
 
@@ -19,7 +19,7 @@ export default class Demo extends Phaser.Scene
 
     create() {
         this.snake = new Snake(this);
-        const grid = new Grid();
+        this.add.rectangle(20, 20, 20, 20, 0xa0a0a0).setOrigin(0);
     }
 
     update(time: number, delta: number) {
@@ -94,19 +94,6 @@ class Snake {
             var newPart = this.scene.add.rectangle(this.tailPosition.getTopLeftCornerX(), this.tailPosition.getTopLeftCornerY(), 20, 20, 0xfff000);
             newPart.setOrigin(0);
             this.body.add(newPart);
-        }
-    }
-}
-
-class Grid {
-    public grid: Array<Array<number>> = [];
-    
-    constructor() {
-        for (let y = 0; y < 30; y++) {
-            this.grid[y] = [];
-            for (var x = 0; x < 40; x++){
-                this.grid[y][x] = 0;
-            }
         }
     }
 }
